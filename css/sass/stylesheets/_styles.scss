@@ -1,0 +1,17 @@
+
+body  {
+  font-family: $font-family;
+  font-size:$font-size;
+  line-height:$line-height;
+  background-color: $body-bg-color;
+}
+
+.infoHolder {
+  color:$info-color;
+  padding: 15px;
+  margin: 15px;
+  @include background-gradient( $neutral-color );
+  @include round-corners( $base-radius, $info-color );
+  @include bevel-text( light );
+}
+

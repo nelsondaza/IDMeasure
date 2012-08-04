@@ -1,0 +1,25 @@
+$base-color: #acabcc;
+$base-gradient: matte;//bevel,glossy,recessed,matte
+
+//$active-color: #DDD;
+$font-size: 70%;
+$base-radius: 4px !default;
+
+$tabs-dark: #333;
+$tabs-light: #666;
+
+$tabs-bottom-radius: .4em;
+$tabs-bottom-gradient: 'bevel';
+$tabs-bar-gradient: 'matte';
+$tabs-bottom-active-gradient: 'recessed';
+
+// $toolbar-gradient: 'glossy';
+
+@import 'stylesheets/variables';
+@import 'stylesheets/mixins';
+@import 'stylesheets/global';
+@import 'stylesheets/styles';
+
+//@include pictos-iconmask('photos2');
+//@include pictos-iconmask('team');
+
