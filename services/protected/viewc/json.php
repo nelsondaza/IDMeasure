@@ -1,0 +1,2 @@
+<?
+	echo toJSON( $data );

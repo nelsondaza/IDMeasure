@@ -1,0 +1,5 @@
+<data>
+<?
+	toXML( $data );
+?>
+</data>
