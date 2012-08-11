@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'text!templates/desktop/home.html'], function($, Backbone, template){
+define(['backbone', 'text!templates/desktop/home.html'], function(Backbone, template){
     var View = Backbone.View.extend({
         // Represents the actual DOM element that corresponds to your View
         // (There is a one to one relationship between View Objects and DOM elements)

@@ -9,19 +9,22 @@ define(['jquery','backbone','views/desktop/init','views/desktop/home'], function
             // When there is no hash bang on the url, the home method is called
             '': 'init',
             '_=_': 'redirect',
-            'X': 'home'
+            'home': 'home'
         },
         'home': function(){
+            console.log( "home called" );
             // Instantiating mainView and anotherView instances
             var homeView = new HomeView();
             // Renders the mainView template
             homeView.render();
         },
         'redirect': function(){
+            console.log( "redirect called" );
             var initView = new InitView( { code:this.getRequest('code') } );
             initView.render();
         },
         'init': function()  {
+            console.log( "init called" );
             var initView = new InitView();
             initView.render();
         },

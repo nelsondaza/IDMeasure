@@ -17,10 +17,11 @@ IDMeasure me ayudará a llevar las cuentas y cálculos de todo (en lo posible).
 - RequireJS 2.0.4
 - Modernizr v2.6.1
 - jQuery 1.7.2
-- Backbone.js 0.9.2
-- Underscore.js 1.3.3
+- Backbone 0.9.2
+- Underscore 1.3.3
+- [Twitter Bootstrap 2.0.4](http://twitter.github.com/bootstrap/index.html)
 - Normalize.css
-- SASS
+- LESS
 - DooPHP
 
 ## Contribuciones

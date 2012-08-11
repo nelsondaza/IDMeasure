@@ -46,7 +46,7 @@ class IDSessionController extends IDGlobalController
     public function code( )    {
         $data = array( );
         $data['active'] = false;
-        $data['action'] = '/user/home';
+        $data['action'] = '/home';
 
         if( $this->params['code'] ) {
             if ( self::$session->user ) {
@@ -56,6 +56,7 @@ class IDSessionController extends IDGlobalController
                 $app_access_token = file_get_contents( "https://graph.facebook.com/oauth/access_token?client_id=" . Doo::conf()->FACEBOOK['APP_ID'] . "&redirect_uri=" . urlencode( Doo::conf()->FACEBOOK['CANVAS_PAGE'] ) . "&client_secret=" . Doo::conf()->FACEBOOK['APP_SECRET'] . "&code=" . $this->params['code'] );
                 $user = file_get_contents( "https://graph.facebook.com/me?" . $app_access_token );
                 self::$session->user = $user;
+                $data['active'] = true;
             }
         }
         $this->renderc( $data );
