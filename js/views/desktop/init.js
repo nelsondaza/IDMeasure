@@ -44,7 +44,7 @@ define(['backbone'], function(){
         },
         'goHome': function()  {
             this.$el.html(_.template( this.template, {title:'Bienvenido!', desc:'Redirigiendo al home...'} ) );
-            document.location.href = '#home';
+            document.location.href = '/#home';
         },
         'redirect': function( msg, url )  {
             this.$el.html(_.template( this.template, {title:'Un momento por favor!', desc:msg} ) );

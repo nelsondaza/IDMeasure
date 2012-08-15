@@ -12,7 +12,9 @@ class MainController extends DooController{
     }
 
     public function gen_models(){
-        Doo::loadCore('db/DooModelGen');
-        DooModelGen::genMySQL();
+        //Doo::loadCore('db/DooModelGen');
+        echo "listo";
+        return;
+        //DooModelGen::genMySQL();
     }
 }

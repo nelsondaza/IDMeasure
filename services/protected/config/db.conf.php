@@ -7,8 +7,11 @@
 
 
 //Clientes/Ciudades
-$dbmap['Client']['has_many']['ClientChannel'] = array('foreign_key'=>'client');
+$dbmap['User']['has_many']['UserProperties'] = array('foreign_key'=>'id_user');
 
+$dbmap['UserProperties']['belongs_to']['User'] = array('foreign_key'=>'id_user');
+
+/*
 //Canales
 $dbmap['Channel']['has_many']['ClientChannel'] = array('foreign_key'=>'channel');
 
@@ -34,3 +37,4 @@ $dbmap['SlotChapter']['belongs_to']['Chapter'] = array('foreign_key'=>'id');
 
 // app.conf.php
 
+*/

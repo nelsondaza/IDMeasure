@@ -57,6 +57,7 @@ class IDSessionController extends IDGlobalController
                 $user = file_get_contents( "https://graph.facebook.com/me?" . $app_access_token );
                 self::$session->user = $user;
                 $data['active'] = true;
+                $data['user'] = $user;
             }
         }
         $this->renderc( $data );

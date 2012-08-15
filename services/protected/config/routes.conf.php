@@ -29,13 +29,14 @@ $mB = array(
     'results' => '/^[0-9]{1,2}$/'
 );
 
-//$route['*']['/gen_model'] = array('MainController', 'gen_models', 'authName' => 'Model Generator', 'auth' =>array('admin' => '1234'), 'authFail' => 'Unauthorized!');
+$route['*']['/gen_model'] = array('MainController', 'gen_models', 'authName' => 'Model Generator', 'auth' =>array('idmes' => '0487'), 'authFail' => 'Unauthorized!');
 
 // Verificación de usuario
 $route['*']['/session/init'] = array( 'IDSessionController', 'index' );
 // Redirección de usuario según codigo
 $route['*']['/session/code/:code'] = array( 'IDSessionController', 'code', 'match' => array( 'code' => '/^.{2,}$/' ) );
 
+/*
 // Ciudades
 $route['*']['/ciudades/:clientKey/:format'] = array('PPAController', 'ciudades', 'match' => array( 'clientKey' => $mB['clientKey'], 'format' => $mB['format'] ) );
 
@@ -85,3 +86,4 @@ $route['*']['/programa/:clientKey/:format/:program/:start']		= array('PPAControl
 $route['*']['/log/access/:clientKey/:format']	= array('PPAController', 'access', 'match' => array( 'clientKey' => $mB['clientKey'], 'format' => $mB['format'] ) );
 
 
+*/
