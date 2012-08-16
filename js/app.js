@@ -38,6 +38,10 @@ require.config({
 
 // Include Desktop Specific JavaScript files here (or inside of your Desktop router)
 require(['modernizr','jquery','backbone','routers/Desktop'], function(Modernizr, $, Backbone, Desktop) {
+
+    var offset = new Date().getTimezoneOffset() / -60;
+    document.cookie = 'timezoneOffset=' + encodeURIComponent(offset);
+
     // Instantiates a new Router
     this.router = new Desktop();
 });

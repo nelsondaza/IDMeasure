@@ -29,12 +29,15 @@ $mB = array(
     'results' => '/^[0-9]{1,2}$/'
 );
 
-$route['*']['/gen_model'] = array('MainController', 'gen_models', 'authName' => 'Model Generator', 'auth' =>array('idmes' => '0487'), 'authFail' => 'Unauthorized!');
+// $config['APP_USER'] y $config['APP_PASS'] se definen en config/app.conf.php
+$route['*']['/gen_model'] = array('MainController', 'gen_models', 'authName' => 'Model Generator', 'auth' => array( $config['APP_USER'] => $config['APP_PASS'] ), 'authFail' => 'Unauthorized!');
+
 
 // Verificación de usuario
 $route['*']['/session/init'] = array( 'IDSessionController', 'index' );
 // Redirección de usuario según codigo
 $route['*']['/session/code/:code'] = array( 'IDSessionController', 'code', 'match' => array( 'code' => '/^.{2,}$/' ) );
+
 
 /*
 // Ciudades

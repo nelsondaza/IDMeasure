@@ -32,7 +32,7 @@ class IDGlobalController extends DooController {
 
         self::$session = Doo::session("IDMeasure");
 
-		IDGlobalController::$resource = $resource;
+ 		IDGlobalController::$resource = $resource;
 		IDGlobalController::$action = $action;
 		IDGlobalController::$start = microtime( true );
 		IDGlobalController::$newparams = $this->params;

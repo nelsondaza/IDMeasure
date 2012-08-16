@@ -56,6 +56,9 @@ class IDSessionController extends IDGlobalController
                 $app_access_token = file_get_contents( "https://graph.facebook.com/oauth/access_token?client_id=" . Doo::conf()->FACEBOOK['APP_ID'] . "&redirect_uri=" . urlencode( Doo::conf()->FACEBOOK['CANVAS_PAGE'] ) . "&client_secret=" . Doo::conf()->FACEBOOK['APP_SECRET'] . "&code=" . $this->params['code'] );
                 $user = file_get_contents( "https://graph.facebook.com/me?" . $app_access_token );
                 self::$session->user = $user;
+
+                //$user = new User();
+
                 $data['active'] = true;
                 $data['user'] = $user;
             }

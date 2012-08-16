@@ -1,9 +1,9 @@
 <?php
 
 include './protected/config/common.conf.php';
-include './protected/config/routes.conf.php';
 include './protected/config/db.conf.php';
 include './protected/config/app.conf.php';
+include './protected/config/routes.conf.php';
 
 if( $config['APP_MODE'] == 'dev' )  {
     include $config['BASE_PATH'].'Doo.php';
@@ -26,11 +26,10 @@ Doo::db()->sql_tracking = ( $config['APP_MODE'] == 'dev' );
 
 Doo::app()->route = $route;
 
-/*
 # Uncomment for DB profiling
-Doo::logger()->beginDbProfile('doowebsite');
+# Doo::logger()->beginDbProfile('doowebsite');
 Doo::app()->run();
-Doo::logger()->endDbProfile('doowebsite');
-Doo::logger()->rotateFile(20);
-Doo::logger()->writeDbProfiles();
-*/
+# Doo::logger()->endDbProfile('doowebsite');
+# Doo::logger()->rotateFile(20);
+# Doo::logger()->writeDbProfiles();
+

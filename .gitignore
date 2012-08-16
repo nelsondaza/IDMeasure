@@ -44,3 +44,5 @@ build/config/buildinfo.properties
 
 # DooFramework
 services/dooframework
+
+services/protected/config/app.conf.php
