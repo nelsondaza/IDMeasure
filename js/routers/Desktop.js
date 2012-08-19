@@ -1,8 +1,9 @@
-define(['jquery','backbone','views/desktop/init','views/desktop/home'], function($, Backbone, InitView, HomeView){
+define(['jquery','backbone','views/desktop/init','views/desktop/home', 'text!templates/desktop/about.html'], function($, Backbone, InitView, HomeView, aboutText ){
     var Router = Backbone.Router.extend({
         initialize: function(){
             // Tells Backbone to start watching for hashchange events
             Backbone.history.start();
+            $("#main").html( aboutText );
         },
         // All of your Backbone Routes (add more)
         routes: {

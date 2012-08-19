@@ -9,24 +9,29 @@ define(['backbone'], function(){
                 '<h4 class="alert-heading"><%= title %></h4>',
                 '<%= desc  %>'
             ].join("");
-            $("#main").empty().append( this.$el );
+            $("#mainInfo").empty().append( this.$el );
             this.$el.addClass( 'alert' );
             this.$el.addClass( 'alert-info' );
         },
         render: function() {
             this.$el.html(_.template( this.template, {title:'Un momento por favor!', desc:'Estoy validando su acceso...'} ) );
 
-            var main = this;
-            if( main.options.code )  {
-                $.getJSON('/services/session/code/' + main.options.code, function( session )    {
+            var self = this;
+            if( self.options.code )  {
+                $.getJSON('/services/session/code/' + self.options.code, function( session )    {
                     console.log( "code answer" );
                     console.log( session );
                     var items = [];
                     if( session.active )    {
-                        main.goHome( );
+                        self.goHome( );
                     }
-                    else if( session.action == 'redirect' )  {
-                        main.redirect( 'Autorizaci&oacute;n requerida, enviando ...', session.url );
+                    else    {
+                        self.$el.empty();
+                        self.$el.removeClass( 'alert-info' );
+                        self.$el.addClass( 'alert-error' );
+                        self.$el.html(_.template( self.template, {
+                            title:'Error de Autorización!',
+                            desc:"No se permite el acceso a la aplicación, por favor verifique su ingreso."} ) );
                     }
                 });
             }
@@ -34,10 +39,10 @@ define(['backbone'], function(){
                 $.getJSON('/services/session/init', function( session )    {
                     console.log( "init answer" );
                     if( session.active )    {
-                        main.goHome( );
+                        self.goHome( );
                     }
                     else if( session.action == 'redirect' )  {
-                        main.redirect( 'Autorizaci&oacute;n requerida, enviando ...', session.url );
+                        self.redirect( 'Autorizaci&oacute;n requerida, enviando ...', session.url );
                     }
                 });
             }
@@ -49,9 +54,10 @@ define(['backbone'], function(){
         'redirect': function( msg, url )  {
             this.$el.html(_.template( this.template, {title:'Un momento por favor!', desc:msg} ) );
 
-            console.log( url );
-            if( confirm( '¿Permitir redirigir?' ) )
-                document.location.href = url;
+            if( !url )
+                url = "/#about";
+
+            document.location.href = url;
         }
     });
     return View;

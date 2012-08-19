@@ -20,11 +20,12 @@ class IDGlobalController extends DooController {
 			$data = $file;
 		$data = array_merge( array( 'list' => array( ), 'error' => null, 'action' => null ), $data );
 
-        if( !is_string( $file ) )   {
+        if( !is_string( $file ) )
             $file = $this->params['format'];
-        }
+        if( Doo::conf()->DEBUG_ENABLED )
+            $data['sql'] = Doo::db()->showSQL( );
 
-		parent::renderc( $file, $data, $enableControllerAccess, $includeTagClass );
+        parent::renderc( $file, $data, $enableControllerAccess, $includeTagClass );
 		
 	}
 	
@@ -54,7 +55,7 @@ class IDGlobalController extends DooController {
 
         if( !isset( $this->params['format'] ) || !$this->params['format'] )
             $this->params['format'] = 'json';
-
+        /*
         if( $this->params['format'] == 'json' )	{
             if( isset( $_REQUEST['callback'] ) && $_REQUEST['callback'] )
                 header( "Content-type: application/javascript; charset=utf-8" );
@@ -63,6 +64,7 @@ class IDGlobalController extends DooController {
         }
         else if ( $this->params['format'] == 'xml' )
             header( "Content-type: text/xml; charset=utf-8" );
+        */
 
         if( Doo::conf( )->get( 'APP_MODE' ) != 'dev' )	{
 

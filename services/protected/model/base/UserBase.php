@@ -115,7 +115,7 @@ class UserBase extends DooModel{
 
                 'gender' => array(
                         array( 'maxlength', 1 ),
-                        array( 'notnull' ),
+                        array( 'optional' ),
                 ),
 
                 'timezone' => array(

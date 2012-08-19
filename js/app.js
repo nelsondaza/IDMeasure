@@ -19,7 +19,7 @@ require.config({
         underscore: "libs/underscore-1.3.3",
         backbone: "libs/backbone-0.9.2",
         // Require.js Plugins
-        text: "plugins/text-2.0.1"
+        text: "plugins/text-2.0.3"
     },
     // Sets the configuration for your third party scripts that are not AMD compatible
     shim: {
