@@ -16,6 +16,7 @@ require.config({
         // Core Libraries
         modernizr: "libs/modernizr-2.6.1",
         jquery: "libs/jquery-1.7.2",
+        bootstrap: "libs/bootstrap-2.1.0",
         underscore: "libs/underscore-1.3.3",
         backbone: "libs/backbone-0.9.2",
         // Require.js Plugins
@@ -27,22 +28,29 @@ require.config({
             exports: "$"  //attaches "Backbone" to the window object
         },
         "underscore": {
+            deps: ["jquery"],
             exports: "_"  //attaches "Backbone" to the window object
         },
+        "bootstrap": {
+            deps: ["jquery"]
+        },
         "backbone": {
-            deps: ["underscore", "jquery"],
+            deps: ["underscore"],
             exports: "Backbone"  //attaches "Backbone" to the window object
         }
     } // end Shim Configuration
 });
 
 // Include Desktop Specific JavaScript files here (or inside of your Desktop router)
-require(['modernizr','jquery','backbone','routers/Desktop'], function(Modernizr, $, Backbone, Desktop) {
+require(['backbone','routers/Desktop', 'modernizr', 'bootstrap'], function( Backbone, Desktop ) {
 
     var offset = new Date().getTimezoneOffset() / -60;
     document.cookie = 'timezoneOffset=' + encodeURIComponent(offset);
 
+
+    //console.log( this );
     // Instantiates a new Router
-    this.router = new Desktop();
+    this.mainRouter = new Desktop();
+
 });
 

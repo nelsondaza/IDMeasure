@@ -1,10 +1,7 @@
 define(['backbone', 'text!templates/desktop/home.html'], function(Backbone, template){
     var View = Backbone.View.extend({
         initialize: function() {
-
-            var info = $('#mainInfo');
-            info.empty();
-            info.hide();
+            mainRouter.hideMainMessage();
             var main = $('#main');
             main.empty();
             main.append( this.$el );

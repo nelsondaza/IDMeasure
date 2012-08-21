@@ -1,63 +1,75 @@
 <div class="span3">
-    <div class="well sidebar-nav">
-        <ul class="nav nav-list">
-            <li class="nav-header">Sidebar</li>
-            <li class="active"><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="nav-header">Sidebar</li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="nav-header">Sidebar</li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+    <div class="well well-small sidebar-nav affix">
+        <ul class="nav nav-list" id="navbar">
+            <li class="nav-header">Acerca de <em>IDMeasure</em></li>
+            <li class="active"><a href="#about">Acerca de</a></li>
+            <li><a href="#about_feats">Características</a></li>
+            <li><a href="#about_contact">Contacto</a></li>
+            <li class="nav-header">Mejoras de <em>IDMeasure</em></li>
+            <li><a href="#about_done">Lo nuevo</a></li>
+            <li><a href="#about_pending">Lo que viene</a></li>
+            <li><a href="#about_add">Proponer</a></li>
         </ul>
-    </div><!--/.well -->
-</div><!--/span-->
-<div class="span9">
-    <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
     </div>
-    <div class="row-fluid">
-        <div class="span4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!--/span-->
-        <div class="span4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!--/span-->
-        <div class="span4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!--/span-->
-    </div><!--/row-->
-    <div class="row-fluid">
-        <div class="span4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!--/span-->
-        <div class="span4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!--/span-->
-        <div class="span4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!--/span-->
-    </div><!--/row-->
-</div><!--/span-->
+</div>
+<div class="span9">
+    <section id="about">
+        <div class="page-header">
+            <h1>Acerca de <small>IDMeasure <sup><i>beta</i></sup> <sub><i>v. 0.0.1</i></sub></small></h1>
+        </div>
+        <p>
+            IDMeasure es una aplicación muy simple, su intención es permitir hacer una medición y comparación de datos.
+            <br />
+            <br />
+            Se trata de una aplicación en versión <em>beta</em> y en constante desarrollo, en la que los usuarios proponen los cambios que se harán a la misma o votan por el cambio que más les gusta.
+        </p>
+    </section>
+    <section id="about_feats">
+        <h2>Características</h2>
+        <table class="table table-bordered table-striped">
+            <tbody>
+            <tr>
+                <th>HTML5</th>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <th>Responsibe Design</th>
+                <td class="muted">Permite que se visualize en múltiples dispositivos</td>
+            </tr>
+            <tr>
+                <th>Integración con Facebook</th>
+                <td>Evita el usar contraseñas especiales.<br /><small>En una furura versión se usará OpenID</small></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section id="about_contact">
+        <h2>Contacto</h2>
+        <form class="form-horizontal border_rounded">
+            <div class="control-group">
+                <label class="control-label" for="inputName">Nombre</label>
+                <div class="controls">
+                    <input type="text" id="inputName" placeholder="Nombre...">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">E-mail</label>
+                <div class="controls">
+                    <input type="text" id="inputEmail" placeholder="E-mail...">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputComment">Comentario</label>
+                <div class="controls">
+                    <textarea rows="3" id="inputComment" placeholder="Comentario..."></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button class="btn btn-small" type="button" id="buttonSend">Enviar</button>
+                    <button class="btn btn-small" type="button" id="buttonClear">Limpiar</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

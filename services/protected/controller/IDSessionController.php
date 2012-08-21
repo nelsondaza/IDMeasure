@@ -14,10 +14,11 @@ class IDSessionController extends IDGlobalController
     public function index( )    {
         $data = array( );
         $data['active'] = false;
-        $data['action'] = '/user/home';
+        $data['action'] = null;
 
         if ( self::$session->user ) {
             $data['active'] = true;
+            $data['action'] = 'home';
         }
         else    {
             $signed_request = ( isset( $_REQUEST["signed_request"] ) ? $_REQUEST["signed_request"]: '' );
@@ -35,7 +36,7 @@ class IDSessionController extends IDGlobalController
             else    {
                 self::$session->user = array( );
                 self::$session->user['id'] = $info["user_id"];
-                $data['action'] = '/user/home';
+                $data['action'] = 'home';
                 $data['session'] = $info;
             }
         }
@@ -119,7 +120,7 @@ class IDSessionController extends IDGlobalController
                 'lname' => self::$session->user->last_name,
                 'timezone' => self::$session->user->timezone
             );
-            $data['action'] = '/home';
+            $data['action'] = 'home';
         }
 
         $this->renderc( $data );
