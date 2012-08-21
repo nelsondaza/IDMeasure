@@ -2,7 +2,7 @@
 
 ## Descripción general
 
-IDMeasure me ayudará a llevar las cuentas y cálculos de todo (en lo posible).
+IDMeasure es una aplicación muy simple, su intención es permitir hacer una medición y comparación de datos.
 
 
 ## Características
@@ -19,7 +19,7 @@ IDMeasure me ayudará a llevar las cuentas y cálculos de todo (en lo posible).
 - jQuery 1.7.2
 - Backbone 0.9.2
 - Underscore 1.3.3
-- [Twitter Bootstrap 2.0.4](http://twitter.github.com/bootstrap/index.html)
+- [Twitter Bootstrap 2.1.0](http://twitter.github.com/bootstrap/index.html)
 - Normalize.css
 - LESS
 - DooPHP
