@@ -19,8 +19,7 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
                 '</div>'
             ].join("");
 
-            $("#main").html( aboutText );
-            $('#navbar').scrollspy( );
+            this.sectionAbout();
 
             // Tells Backbone to start watching for hashchange events
             Backbone.history.start();
@@ -96,8 +95,80 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
             });
         },
         'sectionAbout': function(){
+            var REXLetter = /^[a-z ]{3,}$/i;
+            var REXEmail = /^([-\w\.]{2,})@([\w-]+)\.([\w-]{2,4})$/i;
+            var REXAny = /^([.]{4,})$/;
+
             console.log( "about called" );
-            $("#main").html( aboutText );
+            $('#main').html( aboutText );
+            $('#navbar').scrollspy( );
+
+            $('#inputName').bind( 'blur keyup', function(){
+                $(this).closest('.control-group').removeClass('success error').addClass( ( REXLetter.test( $(this).val() ) ? 'success' : 'error' ) );
+            });
+
+            $('#inputEmail').bind( 'blur keyup', function(){
+                $(this).closest('.control-group').removeClass('success error').addClass( ( REXEmail.test( $(this).val() ) ? 'success' : 'error' ) );
+            });
+
+            $('#inputComment').bind( 'blur keyup', function(){
+                $(this).closest('.control-group').removeClass('success error').addClass( ( REXAny.test( $(this).val() ) ? 'success' : 'error' ) );
+            });
+
+            $('#aboutClear').click(function(){
+                var button = $(this);
+                button.addClass('disabled');
+                button.attr('disabled','disabled');
+                button.addClass('btn-warning');
+
+                $('#aboutForm').get(0).reset();
+
+                setTimeout( function(){
+                    button.removeClass('btn-warning');
+                    button.addClass('btn-success');
+                    setTimeout( function(){
+                        button.removeClass('btn-success disabled');
+                        button.removeAttr('disabled');
+                    }, 300 );
+                }, 300 );
+
+            });
+
+            $('#aboutSend').click(function(){
+                var button = $(this);
+                button.addClass('disabled');
+                button.attr('disabled','disabled');
+                button.addClass('btn-warning');
+
+                $('#inputName').blur();
+                $('#inputEmail').blur();
+                $('#inputComment').blur();
+                $('#inputName').val( _(  $('#inputName').val() ).chain().clean().trim().capitalize().value() );
+                $('#inputComment').val( _( $('#inputComment').val() ).chain().clean().trim().value() );
+
+                if( $('#aboutForm .control-group.error').length > 0 ) {
+                    $('#aboutForm .control-group.error :input').get(0).focus();
+                    setTimeout( function(){
+                        button.removeClass('btn-warning');
+                        button.addClass('btn-danger');
+                        setTimeout( function(){
+                            button.removeClass('btn-danger disabled');
+                            button.removeAttr('disabled');
+                        }, 500 );
+                    }, 300 );
+                }
+                else    {
+                    setTimeout( function(){
+                        button.removeClass('btn-warning');
+                        button.addClass('btn-success');
+                        setTimeout( function(){
+                            button.removeClass('btn-success disabled');
+                            button.removeAttr('disabled');
+                        }, 300 );
+                    }, 300 );
+                }
+            });
+
         }
     });
     // Returns the Router class
