@@ -97,11 +97,15 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
         'sectionAbout': function(){
             var REXLetter = /^[a-z ]{3,}$/i;
             var REXEmail = /^([-\w\.]{2,})@([\w-]+)\.([\w-]{2,4})$/i;
-            var REXAny = /^([.]{4,})$/;
+            var REXAny = /^(.{10,})$/;
 
             console.log( "about called" );
             $('#main').html( aboutText );
             $('#navbar').scrollspy( );
+
+            $('a[href="#about_contact"]').click( function()   {
+                setTimeout(function() {$('#inputName').focus();}, 300 );
+            });
 
             $('#inputName').bind( 'blur keyup', function(){
                 $(this).closest('.control-group').removeClass('success error').addClass( ( REXLetter.test( $(this).val() ) ? 'success' : 'error' ) );
@@ -120,8 +124,10 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
                 button.addClass('disabled');
                 button.attr('disabled','disabled');
                 button.addClass('btn-warning');
+                $('#aboutInfo').removeClass('success error');
 
                 $('#aboutForm').get(0).reset();
+                $('#aboutForm .control-group').removeClass('success error');
 
                 setTimeout( function(){
                     button.removeClass('btn-warning');
@@ -132,6 +138,8 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
                     }, 300 );
                 }, 300 );
 
+                $('#inputName').focus();
+
             });
 
             $('#aboutSend').click(function(){
@@ -139,11 +147,12 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
                 button.addClass('disabled');
                 button.attr('disabled','disabled');
                 button.addClass('btn-warning');
+                $('#aboutInfo').removeClass('label-warning label-success label-important');
 
                 $('#inputName').blur();
                 $('#inputEmail').blur();
                 $('#inputComment').blur();
-                $('#inputName').val( _(  $('#inputName').val() ).chain().clean().trim().capitalize().value() );
+                $('#inputName').val(    _( $('#inputName').val().toLowerCase( ) ).chain().clean().trim().value() );
                 $('#inputComment').val( _( $('#inputComment').val() ).chain().clean().trim().value() );
 
                 if( $('#aboutForm .control-group.error').length > 0 ) {
@@ -158,14 +167,32 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
                     }, 300 );
                 }
                 else    {
-                    setTimeout( function(){
-                        button.removeClass('btn-warning');
-                        button.addClass('btn-success');
+                    var data = {};
+                    $("#aboutForm .control-group.error :input").each( function( index, elem )   {
+                        data[elem.name] = elem.value;
+                    });
+
+                    $('#aboutInfo').html( 'Enviando ...' );
+                    $('#aboutInfo').addClass( 'label label-warning' );
+
+                    $.post( "/services/contact", data, function( response )  {
+
+                        $('#aboutInfo').removeClass( 'label-warning' );
+                        $('#aboutInfo').addClass( ( response.error ? 'label-important' : 'label-success' ) );
+                        $('#aboutInfo').html( response.message );
+
                         setTimeout( function(){
-                            button.removeClass('btn-success disabled');
-                            button.removeAttr('disabled');
+                            button.removeClass('btn-warning');
+                            button.addClass('btn-success');
+                            setTimeout( function(){
+                                button.removeClass('btn-success disabled');
+                                button.removeAttr('disabled');
+                            }, 300 );
                         }, 300 );
-                    }, 300 );
+
+                        if( !response.error )
+                            $('#aboutClear').click();
+                    }, 'json');
                 }
             });
 

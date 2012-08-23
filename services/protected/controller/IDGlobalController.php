@@ -18,7 +18,7 @@ class IDGlobalController extends DooController {
 		
 		if( !$data && is_array( $file ) )
 			$data = $file;
-		$data = array_merge( array( 'list' => array( ), 'error' => null, 'action' => null ), $data );
+		$data = array_merge( array( 'list' => array( ), 'error' => null, 'action' => null ), ( is_array( $data ) ? $data : array( ) ) );
 
         if( !is_string( $file ) )
             $file = $this->params['format'];
@@ -146,4 +146,21 @@ class IDGlobalController extends DooController {
          **/
     }
 
+    public function contact()   {
+        $data = array( );
+        $data['error'] = false;
+        $data['message'] = 'Mensaje enviado!';
+        $data['action'] = null;
+
+        $this->renderc( $data );
+    }
+
+    public function gen_models()    {
+        Doo::loadCore('db/DooModelGen');
+        DooModelGen::genMySQL();
+    }
+
+    function errorHTML404()    {
+        $this->renderc( '404' );
+    }
 }

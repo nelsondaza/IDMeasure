@@ -10,8 +10,8 @@
  * PUT      Update, Create
  * DELETE 	Delete
  */
-$route['*']['/'] = array('ErrorController', 'index');
-$route['*']['/error'] = array('ErrorController', 'index');
+$route['*']['/'] = array('IDGlobalController', 'errorHTML404');
+$route['*']['/error'] = array('IDGlobalController', 'errorHTML404');
 
 $mB = array(
     'clientKey' => '/^TL27|DAY23|NOC21$/',
@@ -30,13 +30,16 @@ $mB = array(
 );
 
 // $config['APP_USER'] y $config['APP_PASS'] se definen en config/app.conf.php
-$route['*']['/gen_model'] = array('MainController', 'gen_models', 'authName' => 'Model Generator', 'auth' => array( $config['APP_USER'] => $config['APP_PASS'] ), 'authFail' => 'Unauthorized!');
+$route['*']['/gen_model'] = array('IDGlobalController', 'gen_models', 'authName' => 'Model Generator', 'auth' => array( $config['APP_USER'] => $config['APP_PASS'] ), 'authFail' => 'Unauthorized!');
 
 
 // Verificación de usuario
 $route['*']['/session/init'] = array( 'IDSessionController', 'index' );
 // Redirección de usuario según codigo
 $route['*']['/session/code/:code'] = array( 'IDSessionController', 'code', 'match' => array( 'code' => '/^.{2,}$/' ) );
+
+// Contact
+$route['post']['/contact'] = array( 'IDGlobalController', 'contact' );
 
 
 /*
