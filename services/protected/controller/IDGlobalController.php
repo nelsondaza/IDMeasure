@@ -152,7 +152,46 @@ class IDGlobalController extends DooController {
         $data['message'] = 'Mensaje enviado!';
         $data['action'] = null;
 
+
+        $mail = new DooMailer();
+        $mail->addTo('nelson.daza@gmail.com');
+        $mail->setSubject("Contact from IDMeasure.com!");
+
+        ob_start();
+        //echo "!!";
+        $this->contactView();
+        $body = ob_get_clean();
+
+        $mail->setBodyHtml( $body );
+        //$mail->addAttachment('/var/web/files/file1.jpg');
+        $mail->setFrom( $_POST['commentEmail'], $_POST['commentName'] );
+        $mail->send();
+
+
         $this->renderc( $data );
+    }
+
+    public function contactView()   {
+        $EmailData = array( );
+        $EmailData['sender'] = ( isset( $_POST['commentName'] ) ?  $_POST['commentName'] : "Nelson A. Daza P." );
+        $EmailData['message'] = ( isset( $_POST['commentMessage'] ) ?  $_POST['commentMessage'] : "Grandiosa app!!." );
+        $EmailData['clientInfo'] = array(
+            'Browser' => '',
+            'Version' => '',
+            'Platform' => '',
+            'Win32' => '',
+            'Cookies' => '',
+            'JavaScript' => '',
+            'CssVersion' => '',
+            'isMobileDevice' => ''
+
+        );
+
+        $bc = new Browscap( Doo::conf()->SITE_PATH . Doo::conf()->PROTECTED_FOLDER . "cache" );
+
+        $EmailData['clientInfo'] = array_intersect_key( (array)$bc->getBrowser( ), $EmailData['clientInfo'] );
+
+        $this->renderc( 'email/contact', $EmailData );
     }
 
     public function gen_models()    {

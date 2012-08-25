@@ -40,10 +40,10 @@ if(strpos($config['SUBFOLDER'], '/')!==0){
 */
 $config['SUBFOLDER'] = '/services/';
 
-$config['APP_URL'] = 'http://'.$_SERVER['HTTP_HOST'].$config['SUBFOLDER'];
+$config['APP_URL'] = 'http://'.$_SERVER['HTTP_HOST'] . "/" ;
 $config['AUTOROUTE'] = false;
 $config['DEBUG_ENABLED'] = ( $config['APP_MODE'] == 'dev' );
-$config['AUTOLOAD'] = array( 'controller', 'model' );
+$config['AUTOLOAD'] = array( 'controller', 'model', 'class' );
 
 //$config['TEMPLATE_COMPILE_ALWAYS'] = TRUE;
 

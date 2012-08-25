@@ -132,9 +132,17 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
                 setTimeout( function(){
                     button.removeClass('btn-warning');
                     button.addClass('btn-success');
+
+                    $('#aboutInfo').empty();
+                    $('#aboutInfo').removeClass( 'label label-warning label-important label-success' );
+                    $('#aboutSend').removeClass( 'disabled btn-warning btn-danger' );
+                    $('#aboutSend').removeAttr('disabled');
+
                     setTimeout( function(){
                         button.removeClass('btn-success disabled');
                         button.removeAttr('disabled');
+
+
                     }, 300 );
                 }, 300 );
 
@@ -168,9 +176,10 @@ define(['backbone','text!templates/desktop/about.html'], function(Backbone, abou
                 }
                 else    {
                     var data = {};
-                    $("#aboutForm .control-group.error :input").each( function( index, elem )   {
+                    $("#aboutForm .control-group :input").each( function( index, elem )   {
                         data[elem.name] = elem.value;
                     });
+                    console.log( data );
 
                     $('#aboutInfo').html( 'Enviando ...' );
                     $('#aboutInfo').addClass( 'label label-warning' );

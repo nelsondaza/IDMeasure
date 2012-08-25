@@ -40,6 +40,8 @@ $route['*']['/session/code/:code'] = array( 'IDSessionController', 'code', 'matc
 
 // Contact
 $route['post']['/contact'] = array( 'IDGlobalController', 'contact' );
+// Contact
+$route['get']['/contact'] = array( 'IDGlobalController', 'contactView' );
 
 
 /*
