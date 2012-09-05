@@ -14,12 +14,12 @@ IDMeasure es una aplicación muy simple, su intención es permitir hacer una med
 * Mobile browser.
 
 ## Librerías
-- RequireJS 2.0.4
-- Modernizr v2.6.1
-- jQuery 1.7.2
+- RequireJS 2.0.6
+- Modernizr 2.6.2
+- jQuery 1.8.1
 - Backbone 0.9.2
 - Underscore 1.3.3
-- [Twitter Bootstrap 2.1.0](http://twitter.github.com/bootstrap/index.html)
+- [Twitter Bootstrap 2.1.1](http://twitter.github.com/bootstrap/index.html)
 - Normalize.css
 - LESS
 - DooPHP

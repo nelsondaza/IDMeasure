@@ -14,9 +14,9 @@ require.config({
     // 3rd party script alias names (Easier to type "libs/jquery" than "js/libs/jquery-1.7.2.min")
     paths: {
         // Core Libraries
-        modernizr: "libs/modernizr-2.6.1",
-        jquery: "libs/jquery-1.7.2",
-        bootstrap: "libs/bootstrap-2.1.0",
+        modernizr: "libs/modernizr-2.6.2",
+        jquery: "libs/jquery-1.8.1",
+        bootstrap: "libs/bootstrap-2.1.1",
         'underscore_string': "plugins/underscore.string-1.1.6",
         underscore: "libs/underscore-1.3.3",
         backbone: "libs/backbone-0.9.2",
@@ -65,4 +65,3 @@ require(['backbone','routers/Desktop', 'underscore_string', 'modernizr', 'bootst
     // Instantiates a new Router
 
 });
-
